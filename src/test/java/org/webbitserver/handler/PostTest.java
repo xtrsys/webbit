@@ -91,7 +91,7 @@ public class PostTest {
         assertEquals(Arrays.toString(byteArray), result);
     }
 
-   // @Test
+    @Test
     public void request_body_longer_than_max_content_length_causes_500_and_does_not_invoke_handlers() throws IOException, ExecutionException, InterruptedException {
         webServer.connectionExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
