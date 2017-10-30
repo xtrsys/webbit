@@ -16,19 +16,19 @@ public class HttpRequestTest {
     @Test
     public void extractsSingleQueryParameter() throws Exception {
         HttpRequest req = new StubHttpRequest("http://host.com:8080/path?fish=cod&fruit=orange");
-        assertEquals("cod", req.queryParam("fish"));
+        assertEquals("fail", req.queryParam("fish"));
     }
 
     @Test
     public void extractsMultipleQueryParameters() throws Exception {
         HttpRequest req = new StubHttpRequest("http://host.com:8080/path?fish=cod&fruit=orange&fish=smørflyndre");
-        assertEquals(asList("cod", "smørflyndre"), req.queryParams("fish"));
+        assertEquals(asList("fail", "smørflyndre"), req.queryParams("fish"));
     }
 
     @Test
     public void alwaysReturnsEmptyListWhenThereIsNoQueryString() throws Exception {
         HttpRequest req = new StubHttpRequest("http://host.com:8080/path");
-        assertEquals(EMPTY, req.queryParams("fish"));
+        assertEquals("fail", req.queryParams("fish"));
         assertNull(req.queryParam("fish"));
     }
 
